@@ -36,3 +36,62 @@
     transform: rotate(360deg);
   }
 }
+
+html,
+body,
+#root,
+#root > div {
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #e6c9b3;
+  color: #444;
+}
+
+ul {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+}
+
+li {
+  border-bottom: 1px inset black;
+  font-size: 1.3rem;
+}
+
+input {
+  width: 100%;
+  background-color: #444;
+  color: #e6c9b3;
+  font-size: 1rem;
+}
+
+button {
+  font-size: 1.3rem;
+  margin-left: 5px;
+  background-color: #444;
+  color: #e6c9b3;
+  font-weight: bold;
+}
+
+.container {
+  padding: 2rem;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  box-shadow: 0 0 4px black;
+  margin-top: 1rem;
+}
+
+.top {
+  margin: 0;
+  padding: 6rem;
+  font-size: 3rem;
+  font-style: italic;
+  background-color: #444;
+  color: #e6c9b3;
+  text-align: center;
+}
