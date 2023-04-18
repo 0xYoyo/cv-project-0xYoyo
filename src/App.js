@@ -4,7 +4,7 @@ import Personal from "./components/personal";
 import Education from "./components/education";
 import Practical from "./components/practical";
 
-function App() {
+const App = () => {
   return (
     <div>
       <h1 className="top">Resume Templater </h1>
@@ -15,6 +15,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

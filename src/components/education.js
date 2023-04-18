@@ -1,98 +1,108 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class Education extends Component {
-  constructor(props) {
-    super(props);
+const Education = () => {
+  const [info, setInfo] = useState({
+    schoolName: "",
+    studyTitle: "",
+    startDate: "",
+    endDate: "",
+  });
 
-    this.state = {
-      schoolName: "",
-      studyTitle: "",
-      startDate: "",
-      endDate: "",
-      editMode: true,
-    };
-  }
+  const [editMode, setEditMode] = useState(true);
 
-  updateSchoolName = (e) => {
-    this.setState({ schoolName: e.target.value });
-  };
-  updateStudyTitle = (e) => {
-    this.setState({ studyTitle: e.target.value });
-  };
-  updateStartDate = (e) => {
-    this.setState({ startDate: e.target.value });
-  };
-  updateEndDate = (e) => {
-    this.setState({ endDate: e.target.value });
+  const handleSchoolName = (e) => {
+    setInfo({
+      ...info,
+      schoolName: e.target.value,
+    });
   };
 
-  handleSubmit = (e) => {
+  const handleStudyTitle = (e) => {
+    setInfo({
+      ...info,
+      studyTitle: e.target.value,
+    });
+  };
+
+  const handleStartDate = (e) => {
+    setInfo({
+      ...info,
+      startDate: e.target.value,
+    });
+  };
+
+  const handleEndDate = (e) => {
+    setInfo({
+      ...info,
+      endDate: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.setState((prevState) => ({ editMode: !prevState.editMode }));
-    console.log(this.state.editMode);
+    setEditMode(!editMode);
+    console.log(editMode);
   };
 
-  render() {
-    if (this.state.editMode) {
-      return (
-        <div className="card">
-          <form>
-            <ul>
-              <h1>Educational Experience</h1>
-              <li>
-                <label>School Name</label>
-                <input
-                  type="text"
-                  onChange={this.updateSchoolName}
-                  value={this.state.schoolName}
-                ></input>
-              </li>
-              <li>
-                <label>Study Title</label>
-                <input
-                  type="text"
-                  onChange={this.updateStudyTitle}
-                  value={this.state.studyTitle}
-                ></input>
-              </li>
-              <li>
-                <label>Starting date</label>
-                <input
-                  type="text"
-                  placeholder="Month & Year"
-                  onChange={this.updateStartDate}
-                  value={this.state.startDate}
-                ></input>
-              </li>
-              <li>
-                <label>End Date</label>
-                <input
-                  type="text"
-                  placeholder="Month & Year / Present"
-                  onChange={this.updateEndDate}
-                  value={this.state.endDate}
-                ></input>
-              </li>
-              <button onClick={this.handleSubmit}>Save</button>
-            </ul>
-          </form>
-        </div>
-      );
-    } else {
-      return (
-        <div className="card">
+  if (editMode) {
+    return (
+      <div className="card">
+        <form>
           <ul>
             <h1>Educational Experience</h1>
-            <li>School Name: {this.state.schoolName}</li>
-            <li>Title of Study: {this.state.studyTitle}</li>
-            <li>Start Date: {this.state.startDate}</li>
-            <li>End Date: {this.state.endDate}</li>
-            <button onClick={this.handleSubmit}>Edit</button>
+            <li>
+              <label>School Name</label>
+              <input
+                type="text"
+                onChange={handleSchoolName}
+                value={info.schoolName}
+              ></input>
+            </li>
+            <li>
+              <label>Study Title</label>
+              <input
+                type="text"
+                onChange={handleStudyTitle}
+                value={info.studyTitle}
+              ></input>
+            </li>
+            <li>
+              <label>Starting date</label>
+              <input
+                type="text"
+                placeholder="Month & Year"
+                onChange={handleStartDate}
+                value={info.startDate}
+              ></input>
+            </li>
+            <li>
+              <label>End Date</label>
+              <input
+                type="text"
+                placeholder="Month & Year / Present"
+                onChange={handleEndDate}
+                value={info.endDate}
+              ></input>
+            </li>
+            <button onClick={handleSubmit}>Save</button>
           </ul>
-        </div>
-      );
-    }
+        </form>
+      </div>
+    );
+  } else {
+    return (
+      <div className="card">
+        <ul>
+          <h1>Educational Experience</h1>
+          <li>School Name: {info.schoolName}</li>
+          <li>Title of Study: {info.studyTitle}</li>
+          <li>Start Date: {info.startDate}</li>
+          <li>End Date: {info.endDate}</li>
+          <button onClick={handleSubmit}>Edit</button>
+        </ul>
+      </div>
+    );
   }
-}
+};
 
 export default Education;
